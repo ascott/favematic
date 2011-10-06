@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>soundcloud api hacking</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" href="stylesheets/base.css">
+	<link rel="stylesheet" href="stylesheets/skeleton.css">
+	<link rel="stylesheet" href="stylesheets/layout.css">
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+</head>
+<body>
+
+
+
+	<!-- Primary Page Layout
+	================================================== -->
+
+	<!-- Delete everything in this .container and get started on your own site! -->
+
+	<div class="container">
+		<div class="sixteen columns">
+			<h4>SoundCloud Discography</h4>
+			<h2 id="username"></h2>
+			<ul id="playlists"></ul>
+		</div>
+		
+
+
+	</div><!-- container -->
+
+
+
+	<!-- JS
+	================================================== -->
+	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script src="javascripts/tabs.js"></script>
+	<script type="text/javascript" charset="utf-8">
+	  $(function(){
+	    
+      var userId = '527845'; //subpop
+      getUserData(userId);
+      getPlaylistData(userId);
+      
+    
+    });
+    
+    
+    function getUserData(userId){
+      $.ajax({
+        url: 'https://api.soundcloud.com/users/'+userId+'.json?client_id=956307a721999662072e3d9978287449',
+        type: 'GET',
+        dataType: 'json',
+        complete: function(xhr, textStatus) {
+          //console.log('complete', xhr, textStatus);
+        },
+        success: function(data, textStatus, xhr) {
+          //console.log('success', data, textStatus, xhr);
+          renderUser(data);
+        },
+        error: function(xhr, textStatus, errorThrown) {
+          //console.log('error', xhr, textStatus, errorThrown);
+        }
+      });
+    }
+    
+    function getPlaylistData(userId){
+      $.ajax({
+        url: 'https://api.soundcloud.com/users/'+userId+'/playlists.json?client_id=956307a721999662072e3d9978287449',
+        type: 'GET',
+        dataType: 'json',
+        complete: function(xhr, textStatus) {
+          //console.log('complete', xhr, textStatus);
+        },
+        success: function(data, textStatus, xhr) {
+          //console.log('success', data, textStatus, xhr);
+          renderPlaylists(data);
+        },
+        error: function(xhr, textStatus, errorThrown) {
+          //console.log('error', xhr, textStatus, errorThrown);
+        }
+      });
+    }
+    
+    function renderUser(data){
+      $('#username').html(data.full_name);
+    }
+    
+    function renderPlaylists(data){
+      var s = '';
+      $.each(data, function(i, d){
+        if (d.artwork_url != null){
+          s += '<li><img src="'+d.artwork_url+'"></li>';
+        }
+      });
+      $('#playlists').html(s);
+      
+    }  
+	</script>
+	
+	
+
+<!-- End Document
+================================================== -->
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>soundcloud api hacking</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" href="stylesheets/base.css">
+	<link rel="stylesheet" href="stylesheets/skeleton.css">
+	<link rel="stylesheet" href="stylesheets/layout.css">
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+</head>
+<body>
+
+
+
+	<!-- Primary Page Layout
+	================================================== -->
+
+	<!-- Delete everything in this .container and get started on your own site! -->
+
+	<div class="container">
+		<div class="sixteen columns" style="margin-top:40px">
+			<h4>1st track from every person i follow's fav's list</h4>
+			<h2 id="username"></h2>
+			<div id="stuff"></div>
+		</div>
+		
+
+
+	</div><!-- container -->
+
+
+
+	<!-- JS
+	================================================== -->
+	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script src="javascripts/tabs.js"></script>
+	<script type="text/javascript" charset="utf-8">
+	  $(function(){
+	    
+      var curUserId = '7787606'; //alanna-scott
+      getUserFollowings(curUserId);
+      
+      
+    
+    });
+    
+    
+    function getUserFollowings(curUserId){
+      $.ajax({
+        url: 'https://api.soundcloud.com/users/'+curUserId+'/followings.json?client_id=956307a721999662072e3d9978287449',
+        type: 'GET',
+        dataType: 'json',
+        complete: function(xhr, textStatus) {
+          //console.log('complete', xhr, textStatus);
+        },
+        success: function(data, textStatus, xhr) {
+          //console.log('success', data, textStatus, xhr);
+          getFollowersFavs(data);
+        },
+        error: function(xhr, textStatus, errorThrown) {
+          //console.log('error', xhr, textStatus, errorThrown);
+        }
+      });
+    }
+    
+    function getFollowersFavs(data){
+      $.each(data, function(i, val){
+        //console.log(i, val);
+        
+        var followerid = data[i].id;
+        $.ajax({
+          url: 'https://api.soundcloud.com/users/'+followerid+'/favorites.json?client_id=956307a721999662072e3d9978287449',
+          type: 'GET',
+          dataType: 'json',
+          complete: function(xhr, textStatus) {
+            //console.log('complete', xhr, textStatus);
+          },
+          success: function(data, textStatus, xhr) {
+            //console.log('success', data, textStatus, xhr);
+            if(data.length > 0) {
+              getFavTrack(data);
+            }
+          },
+          error: function(xhr, textStatus, errorThrown) {
+            //console.log('error', xhr, textStatus, errorThrown);
+          }
+        });
+        //var rand = Math.floor(Math.random()*len);      
+        //console.log(data[rand].followings_count);
+
+      });
+      
+      
+      
+
+    }
+    
+    function getFavTrack(data){
+      console.log(data[0]);
+      //$("#stuff").append(playerTemplate(data[0].id));
+      var s = '<audio controls="controls" width="100%"><source src="https://api.soundcloud.com/tracks/'+data[0].id+'/stream?client_id=956307a721999662072e3d9978287449" /></audio>'
+      $("#stuff").append(s);
+      
+      //https://api.soundcloud.com/tracks/{track_id}/stream?client_id=956307a721999662072e3d9978287449
+    }
+    
+    function playerTemplate(id){
+      var playerHTML = '<div class="five columns"><object height="81" width="100%"> <param name="movie" value="http://api.soundcloud.com/tracks/'+id+'&amp;show_comments=false&amp;auto_play=false&amp;color=e6d400"></param> <param name="allowscriptaccess" value="always"></param> <embed allowscriptaccess="always" height="81" src="http://player.soundcloud.com/player.swf?url=http://api.soundcloud.com/tracks/'+id+'&amp;show_comments=false&amp;auto_play=false&amp;color=e6d400" type="application/x-shockwave-flash" width="100%"></embed> </object></div>';
+      return playerHTML;
+    }
+    
+    // MAKE A RANDOM PLAYLIST from THE FAVORITE TRACKS of all the ppl you follow.
+    // 
+    //    logged in user id var userid = '7787606';
+    // 
+    //    get list of followers //https://api.soundcloud.com/users/{user-id}/followings.json
+    //      get 25 random numbers from 0 to followers.length
+    //        foreach follower 0-24  get list of favorites
+    //        choose random # track from favorites
+    //        add track id to array
+    //      return list of track id's.
+
+
+
+
+
+    
+    
+	</script>
+	
+	
+
+<!-- End Document
+================================================== -->
+</body>
+</html>
