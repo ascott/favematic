@@ -40,13 +40,10 @@
 	<!-- Primary Page Layout
 	================================================== -->
 
-	<!-- Delete everything in this .container and get started on your own site! -->
 
 	<div class="container">
 		<div class="sixteen columns" style="margin-top:40px">
-			<h4>1st track from every person i follow's fav's list</h4>
-			<h2 id="username"></h2>
-			<div id="stuff"></div>
+			
 		</div>
 		
 
@@ -59,12 +56,43 @@
 	================================================== -->
 	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 	<script src="javascripts/tabs.js"></script>
+	<script src="http://connect.soundcloud.com/2/latest.min.js"></script>
+
+  <script type="text/javascript" charset="utf-8">
+    SC.connectForm({
+      size:         "l",                 // size of the button (s, m, l)
+      client_id:    "956307a721999662072e3d9978287449",
+      redirect_uri: "http://localhost:8888/soundcloud-favs/soundcloud-callback.html",
+      flow:         "code",
+      connected: function(){
+        SC.get("/me", function(me){
+          alert("Hello " + me.username);
+        });
+        // $('#cwsw-connect').css('display','none');
+        // $('#cwsw-disconnect').css('display','block');
+        
+      },
+      disconnected: function(){
+        alert("Good bye");
+        // $('#cwsw-disconnect').css('display','none');
+        // $('#cwsw-connect').css('display','block');
+        
+      }
+    });
+  </script>
+	
+	
+	
 	<script type="text/javascript" charset="utf-8">
 	  $(function(){
 	    
-      var curUserId = '7787606'; //alanna-scott
-      getUserFollowings(curUserId);
-      
+	    $('#cwsw-disconnect').click(function(){
+	      SC.disconnect();
+	    })
+	    
+      // var curUserId = '7787606'; //alanna-scott
+      //       getUserFollowings(curUserId);
+      //       
       
     
     });
@@ -153,7 +181,7 @@
     
 	</script>
 	
-	
+
 
 <!-- End Document
 ================================================== -->
