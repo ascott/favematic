@@ -36,6 +36,13 @@ audio {
 .title {
   margin:0 0 24px 0;
   text-align:center;
+  font-weight:normal;
+  text-transform:uppercase;
+  color:#555;
+}
+
+.title strong {
+  color:#000;
 }
 
 
