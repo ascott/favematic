@@ -42,8 +42,32 @@
 
 
 	<div class="container">
-		<div class="sixteen columns" style="margin-top:40px">
-			
+		<h4 class="title">you + the ppl you follow + their fav tracks = your new playlist</h4>
+		<div id="connect-form">
+		  <script src="http://connect.soundcloud.com/2/latest.min.js"></script>
+
+      <script type="text/javascript" charset="utf-8">
+        SC.connectForm({
+          size:         "l",                 // size of the button (s, m, l)
+          client_id:    "956307a721999662072e3d9978287449",
+          redirect_uri: "http://ascott.github.com/soundcloud-favs/soundcloud-callback.html",
+          flow:         "code",
+          connected: function(){
+            SC.get("/me", function(me){
+              alert("my id is " + me.id);
+            });
+            // $('#cwsw-connect').css('display','none');
+            // $('#cwsw-disconnect').css('display','block');
+
+          },
+          disconnected: function(){
+            alert("Good bye");
+            // $('#cwsw-disconnect').css('display','none');
+            // $('#cwsw-connect').css('display','block');
+
+          }
+        });
+      </script>
 		</div>
 		
 
@@ -56,30 +80,7 @@
 	================================================== -->
 	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 	<script src="javascripts/tabs.js"></script>
-	<script src="http://connect.soundcloud.com/2/latest.min.js"></script>
 
-  <script type="text/javascript" charset="utf-8">
-    SC.connectForm({
-      size:         "l",                 // size of the button (s, m, l)
-      client_id:    "956307a721999662072e3d9978287449",
-      redirect_uri: "http://ascott.github.com/soundcloud-favs/soundcloud-callback.html",
-      flow:         "code",
-      connected: function(){
-        SC.get("/me", function(me){
-          alert("my id is " + me.id);
-        });
-        // $('#cwsw-connect').css('display','none');
-        // $('#cwsw-disconnect').css('display','block');
-        
-      },
-      disconnected: function(){
-        alert("Good bye");
-        // $('#cwsw-disconnect').css('display','none');
-        // $('#cwsw-connect').css('display','block');
-        
-      }
-    });
-  </script>
 	
 	
 	

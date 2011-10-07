@@ -29,6 +29,16 @@ audio {
   margin:0 auto;
 }
 
+.cwsc-connect-form a {
+  margin:0 auto;
+}
+
+.title {
+  margin:0 0 24px 0;
+  text-align:center;
+}
+
+
 /* #Media Queries
 ================================================== */
 
