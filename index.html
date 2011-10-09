@@ -54,7 +54,9 @@
           flow:         "code",
           connected: function(){
             SC.get("/me", function(me){
+              $('#connect-form').hide();
               alert("my id is " + me.id);
+              getUserFollowings(me.id)
             });
             // $('#cwsw-connect').css('display','none');
             // $('#cwsw-disconnect').css('display','block');
@@ -69,6 +71,7 @@
         });
       </script>
 		</div>
+		<div id="stuff"></div>
 		
 
 
@@ -89,12 +92,7 @@
 	    
 	    $('#cwsw-disconnect').click(function(){
 	      SC.disconnect();
-	    })
-	    
-      // var curUserId = '7787606'; //alanna-scott
-      //       getUserFollowings(curUserId);
-      //       
-      
+	    });
     
     });
     
@@ -152,7 +150,7 @@
     function getFavTrack(data){
       console.log(data[0]);
       //$("#stuff").append(playerTemplate(data[0].id));
-      var s = '<audio controls="controls" width="100%"><source src="https://api.soundcloud.com/tracks/'+data[0].id+'/stream?client_id=956307a721999662072e3d9978287449" /></audio>'
+      var s = '<div><audio controls="controls" width="100%"><source src="https://api.soundcloud.com/tracks/'+data[0].id+'/stream?client_id=956307a721999662072e3d9978287449" /></audio></div>'
       $("#stuff").append(s);
       
       //https://api.soundcloud.com/tracks/{track_id}/stream?client_id=956307a721999662072e3d9978287449
