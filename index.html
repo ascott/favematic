@@ -42,7 +42,16 @@
 
 
 	<div class="container">
-		<h4 class="title">you <strong>&#x2192;</strong> the ppl you follow <strong>&times;</strong> their fav tracks <strong>=</strong> your new playlist</h4>
+
+		<div id="header">
+		  <h4>you</h4>
+		  <span>»</span>
+		  <h4>the ppl you follow</h4>
+		  <span>×</span>
+		  <h4>their fav tracks</h4>
+		  <span>=</span>
+		  <h4>your new playlist</h4>
+		</div>
 		<div id="connect-form">
 		  <script src="http://connect.soundcloud.com/2/latest.min.js"></script>
 
@@ -153,7 +162,7 @@
       var s = '<div><audio controls="controls" width="100%"><source src="https://api.soundcloud.com/tracks/'+data[0].id+'/stream?client_id=956307a721999662072e3d9978287449" /></audio></div>'
       $("#stuff").append(s);
       
-      //https://api.soundcloud.com/tracks/{track_id}/stream?client_id=956307a721999662072e3d9978287449
+      
     }
     
     function playerTemplate(id){
@@ -161,7 +170,7 @@
       return playerHTML;
     }
     
-    // MAKE A RANDOM PLAYLIST from THE FAVORITE TRACKS of all the ppl you follow.
+    // MAKE A PLAYLIST from THE FAVORITE TRACKS of all the ppl you follow.
     // 
     //    logged in user id var userid = '7787606';
     // 
