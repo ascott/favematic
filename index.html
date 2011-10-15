@@ -91,8 +91,45 @@
 	<!-- JS
 	================================================== -->
 	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-	<script src="javascripts/tabs.js"></script>
+  <script src="js/soundcloud.player.api.js"></script>
+  <script src="js/sc-player.js"></script>
+  <script type="text/javascript">
+    $.scPlayer.defaults.onDomReady = function() {
+      $('a.sc-player, div.sc-player').scPlayer({
+        // randomize tracks in a playlist
+        randomize: true
+      });
+    };
+  </script>
 
+  <!-- add a customizable remote control button -->
+  <script type="text/javascript">
+
+    $(function() {
+      // sc-player remote control simulates the click on the play/pause button
+      $('a.sc-remote-link').live('click', function(event) {
+        var $link = $(this),
+            $pause = $('.playing a.sc-pause');
+
+        if ($pause.length) {
+          $pause.click();
+        }else{
+          $('a.sc-play:first').click();
+        }
+        return false;
+      });
+
+      // update the remote buttons class, when changing player state
+      var toggleLink = function(event) {
+        $('a.sc-remote-link').toggleClass('playing', event.type === 'scPlayer:onMediaPlay');
+      };
+      $(document)
+        .bind('scPlayer:onMediaPlay', toggleLink)
+        .bind('scPlayer:onMediaEnd', toggleLink)
+        .bind('scPlayer:onMediaPause', toggleLink);
+    });
+
+  </script>
 	
 	
 	
@@ -158,18 +195,12 @@
     
     function getFavTrack(data){
       console.log(data[0]);
-      //$("#stuff").append(playerTemplate(data[0].id));
-      var s = '<div><audio controls="controls" width="100%"><source src="https://api.soundcloud.com/tracks/'+data[0].id+'/stream?client_id=956307a721999662072e3d9978287449" /></audio></div>'
-      $("#stuff").append(s);
-      
-      
+      var s = '<a href="'+data[0].permalink_url+'" class="sc-player">'+data[0].title+'</a>'
+      //      '<div><audio controls="controls" width="100%"><source src="https://api.soundcloud.com/tracks/'+data[0].per+'/stream?client_id=956307a721999662072e3d9978287449" /></audio></div>'
+      //      $("#stuff").append(s);
     }
     
-    function playerTemplate(id){
-      var playerHTML = '<div class="five columns"><object height="81" width="100%"> <param name="movie" value="http://api.soundcloud.com/tracks/'+id+'&amp;show_comments=false&amp;auto_play=false&amp;color=e6d400"></param> <param name="allowscriptaccess" value="always"></param> <embed allowscriptaccess="always" height="81" src="http://player.soundcloud.com/player.swf?url=http://api.soundcloud.com/tracks/'+id+'&amp;show_comments=false&amp;auto_play=false&amp;color=e6d400" type="application/x-shockwave-flash" width="100%"></embed> </object></div>';
-      return playerHTML;
-    }
-    
+   
     // MAKE A PLAYLIST from THE FAVORITE TRACKS of all the ppl you follow.
     // 
     //    logged in user id var userid = '7787606';
