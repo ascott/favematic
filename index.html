@@ -24,7 +24,6 @@
 	<link rel="stylesheet" href="stylesheets/base.css">
 	<link rel="stylesheet" href="stylesheets/skeleton.css">
 	<link rel="stylesheet" href="stylesheets/layout.css">
-  <link rel="stylesheet" href="stylesheets/sc-player-red.css">
 
 	<!-- Favicons
 	================================================== -->
@@ -92,52 +91,23 @@
 	<!-- JS
 	================================================== -->
 	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-  <script src="js/soundcloud.player.api.js"></script>
-  <script src="js/sc-player.js"></script>
+
  
 
-  <!-- add a customizable remote control button -->
-  <script type="text/javascript">
-
-    // $(function() {
-    //   // sc-player remote control simulates the click on the play/pause button
-    //   $('a.sc-remote-link').live('click', function(event) {
-    //     var $link = $(this),
-    //         $pause = $('.playing a.sc-pause');
-    // 
-    //     if ($pause.length) {
-    //       $pause.click();
-    //     }else{
-    //       $('a.sc-play:first').click();
-    //     }
-    //     return false;
-    //   });
-    // 
-    //   // update the remote buttons class, when changing player state
-    //   var toggleLink = function(event) {
-    //     $('a.sc-remote-link').toggleClass('playing', event.type === 'scPlayer:onMediaPlay');
-    //   };
-    //   $(document)
-    //     .bind('scPlayer:onMediaPlay', toggleLink)
-    //     .bind('scPlayer:onMediaEnd', toggleLink)
-    //     .bind('scPlayer:onMediaPause', toggleLink);
-    // });
-
-  </script>
-	
 	
 	
 	<script type="text/javascript" charset="utf-8">
 	  $(function(){
-	    //$.scPlayer.defaults.onDomReady = null;
-      $.scPlayer.defaults.apiKey = '956307a721999662072e3d9978287449';
-      
-	    getUserFollowings('7787606');
+	 	    getUserFollowings('7787606');
 	    $('#cwsw-disconnect').click(function(){
 	      SC.disconnect();
 	    });
     
     });
+    
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
     
     
     function getUserFollowings(curUserId){
@@ -149,56 +119,57 @@
           //console.log('complete', xhr, textStatus);
         },
         success: function(data, textStatus, xhr) {
-          //console.log('success', data, textStatus, xhr);
-          getFollowersFavs(data);
+          //getFollowersFavs(data);
+          //todo: make list of 25 users who have public favs
+            //get totalnum of followings
+            //var rand = pick a random number from 0 to totalnum
+            var i = getRandomInt(0, data.length-1);
+              //does this user have public favs?
+              console.log(data[i]);
+              if (data[i].public_favorites_count != 0){
+                console.log(data[i].id);
+                getFollowersFavs(data[i].id);
+              }
+              else{
+                console.log('no favs :(');
+              }
+                //get total num of favs
+                //pick random track, add to playlist array
+                
+  
+          console.log(data)
         },
         error: function(xhr, textStatus, errorThrown) {
-          //console.log('error', xhr, textStatus, errorThrown);
+          console.log('error', xhr, textStatus, errorThrown);
         }
       });
     }
     
-    function getFollowersFavs(data){
-      $.each(data, function(i, val){
-        //console.log(i, val);
-        
-        var followerid = data[i].id;
-        $.ajax({
-          url: 'https://api.soundcloud.com/users/'+followerid+'/favorites.json?client_id=956307a721999662072e3d9978287449',
-          type: 'GET',
-          dataType: 'json',
-          complete: function(xhr, textStatus) {
-            //console.log('complete', xhr, textStatus);
-          },
-          success: function(data, textStatus, xhr) {
-            //console.log('success', data, textStatus, xhr);
-            if(data.length > 0) {
-              getFavTrack(data);
-            }
-          },
-          error: function(xhr, textStatus, errorThrown) {
-            //console.log('error', xhr, textStatus, errorThrown);
+    function getFollowersFavs(followerid){     
+      $.ajax({
+        url: 'https://api.soundcloud.com/users/'+followerid+'/favorites.json?client_id=956307a721999662072e3d9978287449',
+        type: 'GET',
+        dataType: 'json',
+        complete: function(xhr, textStatus) {
+          //console.log('complete', xhr, textStatus);
+        },
+        success: function(data, textStatus, xhr) {
+          //console.log('success', data, textStatus, xhr);
+          if(data.length > 0) {
+            getFavTrack(data);
           }
-        });
-        //var rand = Math.floor(Math.random()*len);      
-        //console.log(data[rand].followings_count);
-
+        },
+        error: function(xhr, textStatus, errorThrown) {
+          console.log('error', xhr, textStatus, errorThrown);
+        }
       });
-      
-      
-      $('div.sc-player').scPlayer({
-         apiKey: '956307a721999662072e3d9978287449'
-       });
-       
-      //$('a.sc-player, div.sc-player').scPlayer();
-   
-      
-
+      //var rand = Math.floor(Math.random()*len);      
+      //console.log(data[rand].followings_count);
     }
     
     function getFavTrack(data){
-      console.log(data[0]);
-      var s = '<a href="'+data[0].permalink_url+'">'+data[0].title+'</a>'
+      //console.log(data[0]);
+      var s = '<a href="'+data[0].permalink_url+'" class="sc-player">'+data[0].title+'</a>'
       //      '<div><audio controls="controls" width="100%"><source src="https://api.soundcloud.com/tracks/'+data[0].per+'/stream?client_id=956307a721999662072e3d9978287449" /></audio></div>'
       $("#stuff").append(s);
       
