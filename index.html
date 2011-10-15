@@ -24,6 +24,7 @@
 	<link rel="stylesheet" href="stylesheets/base.css">
 	<link rel="stylesheet" href="stylesheets/skeleton.css">
 	<link rel="stylesheet" href="stylesheets/layout.css">
+  <link rel="stylesheet" href="stylesheets/sc-player-red.css">
 
 	<!-- Favicons
 	================================================== -->
@@ -197,7 +198,7 @@
       console.log(data[0]);
       var s = '<a href="'+data[0].permalink_url+'" class="sc-player">'+data[0].title+'</a>'
       //      '<div><audio controls="controls" width="100%"><source src="https://api.soundcloud.com/tracks/'+data[0].per+'/stream?client_id=956307a721999662072e3d9978287449" /></audio></div>'
-      //      $("#stuff").append(s);
+      $("#stuff").append(s);
     }
     
    
