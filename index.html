@@ -57,28 +57,28 @@
 		  <script src="http://connect.soundcloud.com/2/latest.min.js"></script>
 
       <script type="text/javascript" charset="utf-8">
-        SC.connectForm({
-          size:         "l",                 // size of the button (s, m, l)
-          client_id:    "956307a721999662072e3d9978287449",
-          redirect_uri: "http://ascott.github.com/soundcloud-favs/soundcloud-callback.html",
-          flow:         "code",
-          connected: function(){
-            SC.get("/me", function(me){
-              $('#connect-form').hide();
-              alert("my id is " + me.id);
-              getUserFollowings(me.id)
-            });
-            // $('#cwsw-connect').css('display','none');
-            // $('#cwsw-disconnect').css('display','block');
-
-          },
-          disconnected: function(){
-            alert("Good bye");
-            // $('#cwsw-disconnect').css('display','none');
-            // $('#cwsw-connect').css('display','block');
-
-          }
-        });
+        // SC.connectForm({
+        //           size:         "l",                 // size of the button (s, m, l)
+        //           client_id:    "956307a721999662072e3d9978287449",
+        //           redirect_uri: "http://ascott.github.com/soundcloud-favs/soundcloud-callback.html",
+        //           flow:         "code",
+        //           connected: function(){
+        //             SC.get("/me", function(me){
+        //               $('#connect-form').hide();
+        //               alert("my id is " + me.id);
+        //               getUserFollowings(me.id)
+        //             });
+        //             // $('#cwsw-connect').css('display','none');
+        //             // $('#cwsw-disconnect').css('display','block');
+        // 
+        //           },
+        //           disconnected: function(){
+        //             alert("Good bye");
+        //             // $('#cwsw-disconnect').css('display','none');
+        //             // $('#cwsw-connect').css('display','block');
+        // 
+        //           }
+        //         });
       </script>
 		</div>
 		<div id="stuff" class="sc-player"></div>
@@ -94,36 +94,34 @@
 	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
   <script src="js/soundcloud.player.api.js"></script>
   <script src="js/sc-player.js"></script>
-  <script type="text/javascript">
-    
-  </script>
+ 
 
   <!-- add a customizable remote control button -->
   <script type="text/javascript">
 
-    $(function() {
-      // sc-player remote control simulates the click on the play/pause button
-      $('a.sc-remote-link').live('click', function(event) {
-        var $link = $(this),
-            $pause = $('.playing a.sc-pause');
-
-        if ($pause.length) {
-          $pause.click();
-        }else{
-          $('a.sc-play:first').click();
-        }
-        return false;
-      });
-
-      // update the remote buttons class, when changing player state
-      var toggleLink = function(event) {
-        $('a.sc-remote-link').toggleClass('playing', event.type === 'scPlayer:onMediaPlay');
-      };
-      $(document)
-        .bind('scPlayer:onMediaPlay', toggleLink)
-        .bind('scPlayer:onMediaEnd', toggleLink)
-        .bind('scPlayer:onMediaPause', toggleLink);
-    });
+    // $(function() {
+    //   // sc-player remote control simulates the click on the play/pause button
+    //   $('a.sc-remote-link').live('click', function(event) {
+    //     var $link = $(this),
+    //         $pause = $('.playing a.sc-pause');
+    // 
+    //     if ($pause.length) {
+    //       $pause.click();
+    //     }else{
+    //       $('a.sc-play:first').click();
+    //     }
+    //     return false;
+    //   });
+    // 
+    //   // update the remote buttons class, when changing player state
+    //   var toggleLink = function(event) {
+    //     $('a.sc-remote-link').toggleClass('playing', event.type === 'scPlayer:onMediaPlay');
+    //   };
+    //   $(document)
+    //     .bind('scPlayer:onMediaPlay', toggleLink)
+    //     .bind('scPlayer:onMediaEnd', toggleLink)
+    //     .bind('scPlayer:onMediaPause', toggleLink);
+    // });
 
   </script>
 	
@@ -131,7 +129,10 @@
 	
 	<script type="text/javascript" charset="utf-8">
 	  $(function(){
-	    
+	    //$.scPlayer.defaults.onDomReady = null;
+      $.scPlayer.defaults.apiKey = '956307a721999662072e3d9978287449';
+      
+	    getUserFollowings('7787606');
 	    $('#cwsw-disconnect').click(function(){
 	      SC.disconnect();
 	    });
@@ -184,19 +185,20 @@
 
       });
       
-      $.scPlayer.defaults.onDomReady = function() {
-        $('a.sc-player, div.sc-player').scPlayer({
-          // randomize tracks in a playlist
-          //randomize: true
-        });
-      };
+      
+      $('div.sc-player').scPlayer({
+         apiKey: '956307a721999662072e3d9978287449'
+       });
+       
+      //$('a.sc-player, div.sc-player').scPlayer();
+   
       
 
     }
     
     function getFavTrack(data){
       console.log(data[0]);
-      var s = '<a href="'+data[0].permalink_url+'" class="sc-player">'+data[0].title+'</a>'
+      var s = '<a href="'+data[0].permalink_url+'">'+data[0].title+'</a>'
       //      '<div><audio controls="controls" width="100%"><source src="https://api.soundcloud.com/tracks/'+data[0].per+'/stream?client_id=956307a721999662072e3d9978287449" /></audio></div>'
       $("#stuff").append(s);
       
