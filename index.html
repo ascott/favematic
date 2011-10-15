@@ -95,12 +95,7 @@
   <script src="js/soundcloud.player.api.js"></script>
   <script src="js/sc-player.js"></script>
   <script type="text/javascript">
-    $.scPlayer.defaults.onDomReady = function() {
-      $('a.sc-player, div.sc-player').scPlayer({
-        // randomize tracks in a playlist
-        randomize: true
-      });
-    };
+    
   </script>
 
   <!-- add a customizable remote control button -->
@@ -189,7 +184,12 @@
 
       });
       
-      
+      $.scPlayer.defaults.onDomReady = function() {
+        $('a.sc-player, div.sc-player').scPlayer({
+          // randomize tracks in a playlist
+          //randomize: true
+        });
+      };
       
 
     }
@@ -199,6 +199,7 @@
       var s = '<a href="'+data[0].permalink_url+'" class="sc-player">'+data[0].title+'</a>'
       //      '<div><audio controls="controls" width="100%"><source src="https://api.soundcloud.com/tracks/'+data[0].per+'/stream?client_id=956307a721999662072e3d9978287449" /></audio></div>'
       $("#stuff").append(s);
+      
     }
     
    
