@@ -21,9 +21,12 @@
 
 	<!-- CSS
   ================================================== -->
-	<link rel="stylesheet" href="stylesheets/base.css">
-	<link rel="stylesheet" href="stylesheets/skeleton.css">
-	<link rel="stylesheet" href="stylesheets/layout.css">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/skeleton.css">
+	<link rel="stylesheet" href="css/layout.css">
+	
+	<link rel="stylesheet" href="css/sc-player-red.css" type="text/css" />
+  
 
 	<!-- Favicons
 	================================================== -->
@@ -85,13 +88,16 @@
 	<!-- JS
 	================================================== -->
 	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-
+  <script type="text/javascript" src="js/soundcloud.player.api.js"></script>
+  <script type="text/javascript" src="js/sc-player.js"></script>
  
 
 	
 	
 	<script type="text/javascript" charset="utf-8">
-	  $(function(){
+	  $.scPlayer.defaults.onDomReady = null;
+    
+	  $(function(){  
 	 	  getUserFollowings('7787606'); //7787606 //3207
   	  $('#cwsw-disconnect').click(function(){
   	    SC.disconnect();
@@ -112,28 +118,25 @@
           //console.log('complete', xhr, textStatus);
         },
         success: function(data, textStatus, xhr) {
-          //getFollowersFavs(data);
-          //todo: make list of 25 users who have public favs
-            //get totalnum of followings
-            //var rand = pick a random number from 0 to totalnum
-            var mixlen = 10;
-            var i = 0;
-            while(i < mixlen){
-              var rand = getRandomInt(0, data.length-1);
-              //does this user have public favs?
-              if (data[rand].public_favorites_count != 0){
-                getFollowersFavs(data[rand].id);
-                i++;                
-              }
-              else{
-                console.log('no favs :(');
-              }
+          var mixlen = 10;
+          var i = 0;
+          while(i < mixlen){
+            var rand = getRandomInt(0, data.length-1);
+            //does this user have public favs?
+            if (data[rand].public_favorites_count != 0){
+              getFollowersFavs(data[rand].id);
+              i++;                
             }
+            else{
+              console.log('no favs :(');
+            }
+          }
         },
         error: function(xhr, textStatus, errorThrown) {
           console.log('error', xhr, textStatus, errorThrown);
         }
       });
+
     }
     
     function getFollowersFavs(followerid){     
@@ -163,27 +166,7 @@
       var s = '<li><a href="'+data[rand].permalink_url+'" class="sc-player">'+data[rand].title+' by '+data[rand].user.username+'</a></li>'
       //      '<div><audio controls="controls" width="100%"><source src="https://api.soundcloud.com/tracks/'+data[0].per+'/stream?client_id=956307a721999662072e3d9978287449" /></audio></div>'
       $("#mix").append(s);
-      
-    }
-    
-   
-    // MAKE A PLAYLIST from THE FAVORITE TRACKS of all the ppl you follow.
-    // 
-    //    logged in user id var userid = '7787606';
-    // 
-    //    get list of followers //https://api.soundcloud.com/users/{user-id}/followings.json
-    //      get 25 random numbers from 0 to followers.length
-    //        foreach follower 0-24  get list of favorites
-    //        choose random # track from favorites
-    //        add track id to array
-    //      return list of track id's.
-
-
-
-
-
-    
-    
+    }    
 	</script>
 	
 
