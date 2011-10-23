@@ -1,7 +1,7 @@
 fave-o-matic
 ------------------------------------------------------------------
 ------------------------------------------------------------------
-you + your followers + their fave tracks = your new playlist
+you » the ppl you follow × their fav tracks = your new playlist
 design & code by alanna scott
 
 ------------------------------------------------------------------
