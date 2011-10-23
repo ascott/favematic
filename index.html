@@ -44,13 +44,7 @@
 	<div class="container">
 
 		<div id="header">
-		  <h4>you</h4>
-		  <span>»</span>
-		  <h4>the ppl you follow</h4>
-		  <span>×</span>
-		  <h4>their fav tracks</h4>
-		  <span>=</span>
-		  <h4>your new playlist</h4>
+		  FAVE-O-MATIC
 		</div>
 		<div id="connect-form">
 		  <script src="http://connect.soundcloud.com/2/latest.min.js"></script>
@@ -80,7 +74,7 @@
         //         });
       </script>
 		</div>
-		<div id="stuff" class="sc-player"></div>
+		<ol id="mix" class="sc-player"></ol>
 		
 
 
@@ -98,11 +92,10 @@
 	
 	<script type="text/javascript" charset="utf-8">
 	  $(function(){
-	 	    getUserFollowings('7787606');
-	    $('#cwsw-disconnect').click(function(){
-	      SC.disconnect();
-	    });
-    
+	 	  getUserFollowings('7787606'); //7787606 //3207
+  	  $('#cwsw-disconnect').click(function(){
+  	    SC.disconnect();
+  	  });
     });
     
     function getRandomInt(min, max) {
@@ -123,21 +116,19 @@
           //todo: make list of 25 users who have public favs
             //get totalnum of followings
             //var rand = pick a random number from 0 to totalnum
-            var i = getRandomInt(0, data.length-1);
+            var mixlen = 10;
+            var i = 0;
+            while(i < mixlen){
+              var rand = getRandomInt(0, data.length-1);
               //does this user have public favs?
-              console.log(data[i]);
-              if (data[i].public_favorites_count != 0){
-                console.log(data[i].id);
-                getFollowersFavs(data[i].id);
+              if (data[rand].public_favorites_count != 0){
+                getFollowersFavs(data[rand].id);
+                i++;                
               }
               else{
                 console.log('no favs :(');
               }
-                //get total num of favs
-                //pick random track, add to playlist array
-                
-  
-          console.log(data)
+            }
         },
         error: function(xhr, textStatus, errorThrown) {
           console.log('error', xhr, textStatus, errorThrown);
@@ -168,10 +159,10 @@
     }
     
     function getFavTrack(data){
-      //console.log(data[0]);
-      var s = '<a href="'+data[0].permalink_url+'" class="sc-player">'+data[0].title+'</a>'
+      var rand = getRandomInt(0, data.length-1);
+      var s = '<li><a href="'+data[rand].permalink_url+'" class="sc-player">'+data[rand].title+' by '+data[rand].user.username+'</a></li>'
       //      '<div><audio controls="controls" width="100%"><source src="https://api.soundcloud.com/tracks/'+data[0].per+'/stream?client_id=956307a721999662072e3d9978287449" /></audio></div>'
-      $("#stuff").append(s);
+      $("#mix").append(s);
       
     }
     
