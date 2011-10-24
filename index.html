@@ -25,7 +25,7 @@
 	<link rel="stylesheet" href="css/skeleton.css">
 	<link rel="stylesheet" href="css/layout.css">
 	
-	<link rel="stylesheet" href="css/sc-player-red.css" type="text/css" />
+  <link rel="stylesheet" href="css/sc-player-faveomatic.css" type="text/css" />
   
 
 	<!-- Favicons
@@ -96,6 +96,10 @@
 	
 	<script type="text/javascript" charset="utf-8">
 	  $.scPlayer.defaults.onDomReady = null;
+	  $(document).bind('onPlayerInit.scPlayer', function(event){
+      console.log(event.target, 'is ready!');
+    });
+    
     
 	  $(function(){  
 	 	  getUserFollowings('7787606'); //7787606 //3207
@@ -163,9 +167,16 @@
     
     function getFavTrack(data){
       var rand = getRandomInt(0, data.length-1);
-      var s = '<li><a href="'+data[rand].permalink_url+'" class="sc-player">'+data[rand].title+' by '+data[rand].user.username+'</a></li>'
+      var s = '<li id="sc-'+rand+'"><a href="'+data[rand].permalink_url+'" id="sc-player-'+rand+'">'+data[rand].title+' by '+data[rand].user.username+'</a></li>'
       //      '<div><audio controls="controls" width="100%"><source src="https://api.soundcloud.com/tracks/'+data[0].per+'/stream?client_id=956307a721999662072e3d9978287449" /></audio></div>'
       $("#mix").append(s);
+      $('#sc-player-'+rand).scPlayer({
+        apiKey: '956307a721999662072e3d9978287449',
+        loadArtworks: 0
+      });
+      var player = soundcloud.getPlayer('sc-'+rand);
+      console.log(player);
+      
     }    
 	</script>
 	

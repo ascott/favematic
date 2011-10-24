@@ -1,6 +1,6 @@
 .sc-player {
   font: 12px arial, sans-serif;
-  background-color: red;
+  background-color: #fff;
   color: #333;
   font-size: 0.6em;
   line-height: 1.6em;
@@ -25,7 +25,7 @@
 .sc-scrubber .sc-time-span img {
   height: 80px;
   width: 800px;
-  background-color: red;
+  background:#999;
 }
 
 .sc-scrubber .sc-buffer, .sc-scrubber .sc-played {
@@ -125,6 +125,10 @@
   -webkit-border-radius: 4px;
   padding: 2px 4px;
   font-weight: bold;
+}
+
+.sc-artwork-list {
+  display:none;
 }
 
 /* remote control */
