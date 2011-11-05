@@ -24,13 +24,6 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/layout.css">
-	
-  <link rel="stylesheet" href="css/sc-player-faveomatic.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="css/sc-player-red.css" type="text/css" media="screen"> -->
-  
-  <!-- <link rel="stylesheet" href="css/sc-player-minimal.css" type="text/css"> -->
-  
-  
 
 	<!-- Favicons
 	================================================== -->
@@ -51,34 +44,34 @@
 	<div class="container">
 
 		<div id="header">
-		  FAVE-O-MATIC
+		  <span>FAVE-O-MATIC</span>
 		</div>
 		<div id="connect-form">
 		  <script src="http://connect.soundcloud.com/2/latest.min.js"></script>
 
       <script type="text/javascript" charset="utf-8">
-        SC.connectForm({
-          size:         "l",                 // size of the button (s, m, l)
-          client_id:    "956307a721999662072e3d9978287449",
-          redirect_uri: "http://ascott.github.com/soundcloud-favs/soundcloud-callback.html",
-          flow:         "code",
-          connected: function(){
-            SC.get("/me", function(me){
-              $('#connect-form').hide();
-              alert("my id is " + me.id);
-              getUserFollowings(me.id)
-            });
-            // $('#cwsw-connect').css('display','none');
-            // $('#cwsw-disconnect').css('display','block');
-
-          },
-          disconnected: function(){
-            alert("Good bye");
-            // $('#cwsw-disconnect').css('display','none');
-            // $('#cwsw-connect').css('display','block');
-
-          }
-        });
+        // SC.connectForm({
+        //           size:         "l",                 // size of the button (s, m, l)
+        //           client_id:    "956307a721999662072e3d9978287449",
+        //           redirect_uri: "http://ascott.github.com/soundcloud-favs/soundcloud-callback.html",
+        //           flow:         "code",
+        //           connected: function(){
+        //             SC.get("/me", function(me){
+        //               $('#connect-form').hide();
+        //               alert("my id is " + me.id);
+        //               getUserFollowings(me.id)
+        //             });
+        //             $('#cwsw-connect').css('display','none');
+        //             $('#cwsw-disconnect').css('display','block');
+        // 
+        //           },
+        //           disconnected: function(){
+        //             alert("Good bye");
+        //             $('#cwsw-disconnect').css('display','none');
+        //             $('#cwsw-connect').css('display','block');
+        // 
+        //           }
+        //         });
       </script>
 		</div>
 		
@@ -117,7 +110,7 @@
       
       $.scPlayer.defaults.onDomReady = null;
 	    
-      //getUserFollowings('7787606'); //7787606 //3207
+      getUserFollowings('7787606'); //7787606 //3207
       
       $('#cwsw-disconnect').click(function(){
   	    SC.disconnect();
