@@ -1,4 +1,86 @@
+ol, ul, li{
+  margin:0px;
+}
+
 .sc-waveform-container img {
   width:100%;
   height:50px;
+}
+
+.sc-waveform-container {
+ margin:0 0 24px 0; 
+}
+
+.sc-player {
+  overflow:hidden;
+  height:172px;
+  margin:0 0 24px 0;
+  border-bottom:1px solid #ccc;
+}
+
+.sc-scrubber{
+  width:80%;
+  float:left;
+  padding:0 0 10px 0;
+}
+
+.sc-artwork-list {
+  margin:0 10px 0 0;
+  float:left;
+  width:172px;
+  height:172px;
+}
+
+.sc-artwork-list li {
+  list-style-type:none;
+}
+
+.sc-artwork-list li img {
+  width:172px;
+  height:172px;
+}
+
+.sc-no-artwork {
+  text-indent:-9999px;
+  width:172px;
+  height:172px;
+  background:#d7d7d7;
+}
+.sc-info-close, .sc-info-toggle, .sc-trackslist{
+  display:none;
+}
+
+.sc-info {
+  padding:10px 0 0 0;
+  width:80%;
+  float:left;
+}
+
+.sc-info h3 {
+  font-size:22px;
+  line-height:22px;
+  height:26px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin:0px;
+}
+
+.sc-info h4 {
+  font-size:14px;
+  line-height:14px;
+  height:16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sc-info p{
+  display:none;
+}
+
+.sc-played{
+  background:gold;
+  height:50px;
+  margin-top:-80px;
 }
