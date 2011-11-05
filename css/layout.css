@@ -20,12 +20,15 @@
 /* #Page Styles
 ================================================== */
 
-
+.cwsc-connect-form {
+  float:right;
+  margin:-145px 0 0 0;
+  width:200px;
+}
 
 .cwsc-connect-form a {
   margin:96px auto;
 }
-
 
 #header{
   margin:-16px 0 24px 0;
