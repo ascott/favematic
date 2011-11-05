@@ -24,10 +24,15 @@
   float:right;
   margin:-145px 0 0 0;
   width:200px;
+  height:20px;
 }
 
 .cwsc-connect-form a {
   margin:96px auto;
+}
+
+#mix{
+  clear:both;
 }
 
 #header{
