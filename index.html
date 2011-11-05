@@ -57,7 +57,6 @@
                   flow:         "code",
                   connected: function(){
                     SC.get("/me", function(me){
-                      $('#connect-form').hide();
                       getUserFollowings(me.id)
                     });
                     $('#cwsw-connect').css('display','none');
