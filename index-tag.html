@@ -21,14 +21,14 @@
 
 	<!-- CSS
   ================================================== -->
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/skeleton.css">
-  <link rel="stylesheet" href="css/layout.css">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/skeleton.css">
+	<link rel="stylesheet" href="css/layout.css">
 	
-  <link rel="stylesheet" href="css/sc-player-faveomatic.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="css/sc-player-faveomatic.css" type="text/css" /> -->
   <!-- <link rel="stylesheet" href="css/sc-player-red.css" type="text/css" media="screen"> -->
   
-  <!-- <link rel="stylesheet" href="css/sc-player-minimal.css" type="text/css"> -->
+  <link rel="stylesheet" href="css/sc-player-minimal.css" type="text/css">
   
   
 
@@ -102,24 +102,22 @@
 	
 	<script type="text/javascript" charset="utf-8">
 	
-
-    $(document).ready(function() {
-      
-      $(document).bind('onPlayerInit.scPlayer', function(event){
-        console.log(event.target, 'is ready!');
-      });
-      $(document).bind('onPlayerPlay.scPlayer', function(event){
-        console.log(event.target, 'its playing!');
-      });
-      $(document).bind('onMediaTimeUpdate.scPlayer', function(event){
-        console.log(event.target, 'the track is at ' + event.position + ' out of ' + event.duration + ' which is ' + event.relative + ' of the total');
-      });
-      
-      $.scPlayer.defaults.onDomReady = null;
-	    
-      getUserFollowings('7787606'); //7787606 //3207
-      
-      $('#cwsw-disconnect').click(function(){
+	  // $(document).bind('onPlayerInit.scPlayer', function(event){
+	  //       console.log(event.target, 'is ready!');
+	  //     });
+	  //     $(document).bind('onPlayerPlay.scPlayer', function(event){
+	  //       console.log(event.target, 'its playing!');
+	  //     });
+	  //     $(document).bind('onMediaTimeUpdate.scPlayer', function(event){
+	  //       console.log(event.target, 'the track is at ' + event.position + ' out of ' + event.duration + ' which is ' + event.relative + ' of the total');
+	  //     });
+    
+    
+	  $(function(){  
+	    $.scPlayer.defaults.onDomReady = null;
+  	  
+	 	  getUserFollowings('7787606'); //7787606 //3207
+  	  $('#cwsw-disconnect').click(function(){
   	    SC.disconnect();
   	  });
     });
@@ -145,17 +143,12 @@
             //does this user have public favs?
             if (data[rand].public_favorites_count != 0){
               getFollowersFavs(data[rand].id);
-              i++;             
+              i++;                
             }
             else{
               console.log('no favs :(');
             }
           }
-          if (i == mixlen){
-            console.log("i= "+i);
-            $('.track').scPlayer();
-          }
-          
         },
         error: function(xhr, textStatus, errorThrown) {
           console.log('error', xhr, textStatus, errorThrown);
@@ -188,12 +181,15 @@
     
     function getFavTrack(data){
       var rand = getRandomInt(0, data.length-1);
-      var s = '<li id="sc-'+rand+'"><a href="'+data[rand].permalink_url+'" id="sc-player-'+rand+'" class="track">'+data[rand].title+' by '+data[rand].user.username+'</a></li>'
+      console.log(data[rand])
       
-      //var s = '<iframe width="100%" height="166" scrolling="no" src="http://w.soundcloud.com/player/?url='+data[rand].uri+'&auto_play=false&show_artwork=true" frameborder="0" ></iframe>'
+      // var s = '<li id="sc-'+rand+'"><a href="'+data[rand].permalink_url+'" id="sc-player-'+rand+'" class="track">'+data[rand].title+' by '+data[rand].user.username+'</a></li>'
+      
+      //var s = '<div><audio controls="controls" width="100%"><source src="'+data[rand].stream_url+'" /></audio></div>'
+      var src = data[rand].stream_url+"?client_id=956307a721999662072e3d9978287449";
+      var s = "<li id='sc-"+rand+"'><audio controls preload='auto' autobuffer><source src='"+data[rand].stream_url+"?client_id=956307a721999662072e3d9978287449' /></audio><a href='"+data[rand].permalink_url+"' id='sc-player-"+rand+"'>"+data[rand].title+" by "+data[rand].user.username+"</a></li>";
       $("#mix").append(s);
       
-      $('#sc-'+rand).scPlayer();  
     }    
     
 	</script>
