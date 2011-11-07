@@ -144,7 +144,7 @@ ol, ul, li{
 }
 
 .sc-scrubber .sc-played {
-  background-color: gold;
+  background-color: #F9EC31;
   width:0px;
   height:145px;
   margin: -145px 0 0 0;
