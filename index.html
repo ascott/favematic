@@ -44,33 +44,33 @@
 	<div class="container">
 
 		<div id="header">
-		  <span>FAVE-O-MATIC</span>
+		  <span>fave-o-matic</span>
 		</div>
 		<div id="connect-form">
 		  <script src="http://connect.soundcloud.com/2/latest.min.js"></script>
 
       <script type="text/javascript" charset="utf-8">
-        SC.connectForm({
-          size:         "l",                 // size of the button (s, m, l)
-          client_id:    "956307a721999662072e3d9978287449",
-          redirect_uri: "http://ascott.github.com/soundcloud-favs/soundcloud-callback.html",
-          flow:         "code",
-          connected: function(){
-            SC.get("/me", function(me){
-              getUserFollowings(me.id)
-            });
-            $('#cwsw-connect').css('display','none');
-            $('#cwsw-disconnect').css('display','block');
-
-          },
-          disconnected: function(){
-            $('#cwsw-disconnect').css('display','none');
-            $("#mix").remove();
-            $('#cwsw-connect').css('display','block');
-            
-
-          }
-        });
+        // SC.connectForm({
+        //   size:         "l",                 // size of the button (s, m, l)
+        //   client_id:    "956307a721999662072e3d9978287449",
+        //   redirect_uri: "http://ascott.github.com/soundcloud-favs/soundcloud-callback.html",
+        //   flow:         "code",
+        //   connected: function(){
+        //     SC.get("/me", function(me){
+        //       getUserFollowings(me.id)
+        //     });
+        //     $('#cwsw-connect').css('display','none');
+        //     $('#cwsw-disconnect').css('display','block');
+        // 
+        //   },
+        //   disconnected: function(){
+        //     $('#cwsw-disconnect').css('display','none');
+        //     $("#mix").remove();
+        //     $('#cwsw-connect').css('display','block');
+        //     
+        // 
+        //   }
+        // });
       </script>
 		</div>
 		
@@ -109,7 +109,7 @@
       
       $.scPlayer.defaults.onDomReady = null;
 	    
-      //getUserFollowings('7787606'); //7787606 //3207
+      getUserFollowings('7787606'); //7787606 //3207
       
       $('#cwsw-disconnect').click(function(){
   	    SC.disconnect();
