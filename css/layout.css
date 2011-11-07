@@ -20,6 +20,9 @@
 /* #Page Styles
 ================================================== */
 
+body{
+}
+
 #connect-form{
   float:right;
   width:220px;
@@ -32,15 +35,10 @@
 }
 
 #header{
-  margin:-16px 0 24px 0;
+  font-size:24px;
+  margin:0 0 48px 0;
 }
 
-#header span {
-  font-size:36px;
-  padding:0 10px 0 6px;
-  color:#fff;
-  background:#333; 
-}
 
 ol, ul, li{
   margin:0px;
@@ -60,10 +58,11 @@ ol, ul, li{
   height:145px;
   margin:0 0 24px 0;
   border-bottom:4px double #ccc;
+  border-top:4px double #ccc;
+  background:#f7f7f7;
 }
 
 .sc-artwork-list {
-  margin:0 10px 0 0;
   float:left;
   width:145px;
   height:145px;
@@ -88,30 +87,42 @@ ol, ul, li{
   display:none;
 }
 
+
+
 .sc-info {
   padding:0px;
-  float:left;
   width:800px;
-  margin:0 0 15px 0;
+  margin:0 0 -46px 145px;
+  position:absolute;
+  z-index:1;
+  
+}
+
+.sc-info h3 a{
+  padding:0 3px;
+  background:#000;
+  color:#fff;
+  opacity:.7;
 }
 
 .sc-info h3 {
-  font-size:22px;
+  font-size:16px;
   line-height:22px;
   height:26px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin:0px;
+  margin:0 0 1px 0;
 }
 
 .sc-info h4 {
-  font-size:14px;
+  padding:0 3px;
+  font-size:12px;
   line-height:14px;
   height:16px;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; 
 }
 
 .sc-info p{
@@ -120,16 +131,12 @@ ol, ul, li{
 
 
 .sc-scrubber {
-  float:left;
-}
-
-.sc-scrubber .sc-time-span {
-  background-color: #fff;
+  margin:0 0 -25px 145px;
 }
 
 .sc-scrubber .sc-time-span img {
-  height: 50px;
-  width: 755px;
+  height: 145px;
+  width: 815px;
 }
 
 .sc-scrubber .sc-buffer, .sc-scrubber .sc-played {
@@ -139,52 +146,57 @@ ol, ul, li{
 .sc-scrubber .sc-played {
   background-color: gold;
   width:0px;
-  height:50px;
+  height:145px;
+  margin: -145px 0 0 0;
 }
 
 .sc-controls{
-  width: 50px;
-  height: 50px;
-  background: #EEE;
-  float: left;
-  //text-indent:-9999px;
+  width: 145px;
+  height: 145px;
+  position:absolute;
+  z-index:1;
 }
 
 .sc-time-indicators {
-  font-size:10px;
-  margin:5px 0 0 -50px;
+  font-size: 10px;
+  margin: -25px 0 0 -145px;
+  background: white;
+  position: absolute;
+  padding: 0 5px;
 }
 
 .sc-player .sc-controls a {
   color: transparent;
   background: url('../images/controls.png');
-  background-position: 0px -186px;
-  width:52px;
-  height:52px;
+  background-position: 0 -450px;
+  width:145px;
+  height:145px;
   display:block;
   overflow:hidden;
   text-indent:-9999px;
 }
 
+
+
 .sc-player .sc-controls a:hover {
-  background-position: 0px 0px;
+  background-position: 0 -300px;
 }
 
 .sc-player .sc-controls a.sc-pause {
-  background-position: 0px -62px;
+  background-position: 0 -150px;
   display:none;
 }
 
 .sc-player .sc-controls a.sc-pause:hover{
-  background-position: 0px -124px;
+  background-position: 0 0;
 }
 
 .sc-player.playing .sc-controls a.sc-play{
-  background-position: 0px -62px;
+  background-position: 0 -150px;
 }
 
 .sc-player.playing .sc-controls a.sc-play:hover{
-  background-position: 0px -124px;
+  background-position: 0 0;
 }
 
 /* #Media Queries
