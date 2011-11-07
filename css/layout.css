@@ -25,9 +25,8 @@ body{
 
 #connect-form{
   float:right;
-  width:220px;
   height:40px;
-  margin:-65px 0 0 0;
+  margin:-115px 0 0 0;
 }
 
 #mix{
@@ -35,10 +34,23 @@ body{
 }
 
 #header{
-  font-size:24px;
   margin:0 0 48px 0;
 }
 
+#header span{
+  font-size:36px;
+  background-color: #F9EC31;
+  padding:4px 2px 0px 4px;
+}
+
+#header p {
+  margin:5px 0 0 0;
+  color:#ccc;
+}
+
+#header a {
+  color:#ccc;
+}
 
 ol, ul, li{
   margin:0px;
@@ -99,15 +111,16 @@ ol, ul, li{
 }
 
 .sc-info h3 a{
-  padding:0 3px;
+  padding:4px 4px 2px 4px;
   background:#000;
   color:#fff;
   opacity:.7;
+  text-decoration:none;
 }
 
 .sc-info h3 {
   font-size:16px;
-  line-height:22px;
+  line-height:26px;
   height:26px;
   white-space: nowrap;
   overflow: hidden;
@@ -159,10 +172,11 @@ ol, ul, li{
 
 .sc-time-indicators {
   font-size: 10px;
-  margin: -25px 0 0 -145px;
+  line-height:10px;
+  margin: -20px 0 0 -145px;
   background: white;
   position: absolute;
-  padding: 0 5px;
+  padding: 2px 5px;
 }
 
 
@@ -234,23 +248,8 @@ ol, ul, li{
 	   .sc-info {
   	    width:155px;
   	  }
+  	  #connect-form{
+  	    float:none;
+  	    margin:-36px 0 24px 0;
+  	  }
 	}
-
-
-/* #Font-Face
-================================================== */
-/* 	This is the proper syntax for an @font-face file
-		Just create a "fonts" folder at the root,
-		copy your FontName into code below and remove
-		comment brackets */
-
-/*	@font-face {
-	    font-family: 'FontName';
-	    src: url('../fonts/FontName.eot');
-	    src: url('../fonts/FontName.eot?iefix') format('eot'),
-	         url('../fonts/FontName.woff') format('woff'),
-	         url('../fonts/FontName.ttf') format('truetype'),
-	         url('../fonts/FontName.svg#webfontZam02nTh') format('svg');
-	    font-weight: normal;
-	    font-style: normal; }
-*/

@@ -45,38 +45,36 @@
 
 		<div id="header">
 		  <span>favematic</span>
-		  <p>you <strong>&#x2192;</strong> the ppl you follow <strong>&times;</strong> their fave tracks <strong>=</strong> your new playlist</p>
+		  <p>powered by <a href="http://soundcloud.com">soundcloud</a></p>
 		</div>
-		<ul id="mix"></ul>
 		
 		<div id="connect-form">
 		  <script src="http://connect.soundcloud.com/2/latest.min.js"></script>
 
       <script type="text/javascript" charset="utf-8">
-        // SC.connectForm({
-        //           size:         "l",                 // size of the button (s, m, l)
-        //           client_id:    "956307a721999662072e3d9978287449",
-        //           redirect_uri: "http://ascott.github.com/soundcloud-favs/soundcloud-callback.html",
-        //           flow:         "code",
-        //           connected: function(){
-        //             SC.get("/me", function(me){
-        //               getUserFollowings(me.id)
-        //             });
-        //             $('#cwsw-connect').css('display','none');
-        //             $('#cwsw-disconnect').css('display','block');
-        //         
-        //           },
-        //           disconnected: function(){
-        //             $('#cwsw-disconnect').css('display','none');
-        //             $("#mix").remove();
-        //             $('#cwsw-connect').css('display','block');
-        //             
-        //         
-        //           }
-        //         });
+        SC.connectForm({
+          size:         "l",                 // size of the button (s, m, l)
+          client_id:    "956307a721999662072e3d9978287449",
+          redirect_uri: "http://ascott.github.com/soundcloud-favs/soundcloud-callback.html",
+          flow:         "code",
+          connected: function(){
+            SC.get("/me", function(me){
+              getUserFollowings(me.id)
+            });
+            $('#cwsw-connect').css('display','none');
+            $('#cwsw-disconnect').css('display','block');
+      
+          },
+          disconnected: function(){
+            $('#cwsw-disconnect').css('display','none');
+            $("#mix").hide();
+            $('#cwsw-connect').css('display','block');
+          }
+        });
       </script>
 		</div>
 		
+		<ul id="mix"></ul>
 		
 		
 
