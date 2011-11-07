@@ -59,7 +59,7 @@ ol, ul, li{
   margin:0 0 24px 0;
   border-bottom:4px double #ccc;
   border-top:4px double #ccc;
-  background:#f7f7f7;
+  background:#F9FAE9;
 }
 
 .sc-artwork-list {
@@ -91,7 +91,7 @@ ol, ul, li{
 
 .sc-info {
   padding:0px;
-  width:800px;
+  width:815px;
   margin:0 0 -46px 145px;
   position:absolute;
   z-index:1;
@@ -136,7 +136,7 @@ ol, ul, li{
 
 .sc-scrubber .sc-time-span img {
   height: 145px;
-  width: 815px;
+  width: 100%;
 }
 
 .sc-scrubber .sc-buffer, .sc-scrubber .sc-played {
@@ -203,19 +203,37 @@ ol, ul, li{
 ================================================== */
 
 	/* Smaller than standard 960 (devices and browsers) */
-	@media only screen and (max-width: 959px) {}
+	@media only screen and (max-width: 959px) {
+	   .sc-info {
+ 	    width:815px;
+ 	  }
+	}
 
 	/* Tablet Portrait size to standard 960 (devices and browsers) */
-	@media only screen and (min-width: 768px) and (max-width: 959px) {}
+	@media only screen and (min-width: 768px) and (max-width: 959px) {
+	   .sc-info {
+ 	    width:623px;
+ 	  }
+	}
 
 	/* All Mobile Sizes (devices and browser) */
-	@media only screen and (max-width: 767px) {}
+	@media only screen and (max-width: 767px) {
+
+	}
 
 	/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
-	@media only screen and (min-width: 480px) and (max-width: 767px) {}
+	@media only screen and (min-width: 480px) and (max-width: 767px) {
+	   .sc-info {
+ 	    width:275px;
+ 	  }
+	}
 
 	/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
-	@media only screen and (max-width: 479px) {}
+	@media only screen and (max-width: 479px) {
+	   .sc-info {
+  	    width:155px;
+  	  }
+	}
 
 
 /* #Font-Face
