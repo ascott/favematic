@@ -27,7 +27,7 @@ body{
   float:right;
   width:220px;
   height:40px;
-  margin:-50px 0 0 0;
+  margin:-65px 0 0 0;
 }
 
 #mix{
@@ -164,6 +164,7 @@ ol, ul, li{
   position: absolute;
   padding: 0 5px;
 }
+
 
 .sc-player .sc-controls a {
   color: transparent;
