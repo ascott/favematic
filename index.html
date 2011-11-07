@@ -40,8 +40,7 @@
 	<!-- Primary Page Layout
 	================================================== -->
 
-
-	<div class="container">
+	<div id="loggedout" class="container">
 
 		<div id="header">
 		  <span>favematic</span>
@@ -74,11 +73,41 @@
       </script>
 		</div>
 		
+	</div><!-- container -->
+
+
+	<div id="loggedin" class="container">
+
+		<div id="header">
+		  <span>favematic</span>
+		  <p>powered by <a href="http://soundcloud.com">soundcloud</a></p>
+		</div>
+		
+		<div id="connect-form">
+		  <script src="http://connect.soundcloud.com/2/latest.min.js"></script>
+
+      <script type="text/javascript" charset="utf-8">
+        SC.connectForm({
+          size:         "l",                 // size of the button (s, m, l)
+          client_id:    "956307a721999662072e3d9978287449",
+          redirect_uri: "http://ascott.github.com/soundcloud-favs/soundcloud-callback.html",
+          flow:         "code",
+          connected: function(){
+            SC.get("/me", function(me){
+              getUserFollowings(me.id)
+            });
+            $('#cwsw-connect').css('display','none');
+            $('#cwsw-disconnect').css('display','block');
+      
+          },
+          disconnected: function(){
+            
+          }
+        });
+      </script>
+		</div>
+		
 		<ul id="mix"></ul>
-		
-		
-
-
 	</div><!-- container -->
 
 
@@ -113,6 +142,8 @@
       
       $('#cwsw-disconnect').click(function(){
   	    SC.disconnect();
+  	    $('#loggedin').css('display','none');
+        $('#loggedout').css('display','block');
   	  });
     });
     
