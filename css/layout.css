@@ -52,7 +52,6 @@ body {
 #logo {
   font-size: 48px;
   line-height: 1em;
-  padding: 2px 2px 0px 2px;
   width: 195px;
   margin: 0 auto;
 }
@@ -326,7 +325,8 @@ ol, ul, li{
 	   .sc-info {
   	    width:155px;
   	  }
-  	  #connect-form{
+  	  
+  	  #loggedin #connect-form{
   	    float:none;
   	    margin:-36px 0 24px 0;
   	  }
