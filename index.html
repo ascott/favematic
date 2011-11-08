@@ -88,7 +88,7 @@
 		
 		<div id="connect-form">
 
-      <a href="#" id="cwsw-disconnect">disconnect</a>
+      <a href="#" id="disconnect">logout</a>
 		</div>
 		
 		<ul id="mix"></ul>
@@ -124,7 +124,7 @@
 	    
       getUserFollowings('7787606'); //7787606 //3207
       
-      $('#cwsw-disconnect').click(function(){
+      $('#disconnect').click(function(){
   	    SC.disconnect();
   	    $('#loggedin').css('display','none');
         $('#loggedout').css('display','block');
