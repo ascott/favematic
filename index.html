@@ -124,15 +124,6 @@
 
     $(document).ready(function() {
       
-      $(document).bind('onPlayerInit.scPlayer', function(event){
-        console.log(event.target, 'is ready!');
-      });
-      $(document).bind('onPlayerPlay.scPlayer', function(event){
-        console.log(event.target, 'its playing!');
-      });
-      $(document).bind('onMediaTimeUpdate.scPlayer', function(event){
-        console.log(event.target, 'the track is at ' + event.position + ' out of ' + event.duration + ' which is ' + event.relative + ' of the total');
-      });
       
       $.scPlayer.defaults.onDomReady = null;
 	    
@@ -169,18 +160,13 @@
               getFollowersFavs(data[rand].id);
               i++;             
             }
-            else{
-              console.log('no favs :(');
-            }
           }
           if (i == mixlen){
-            console.log("i= "+i);
-            $('.track').scPlayer();
+            //$('.track').scPlayer();
           }
           
         },
         error: function(xhr, textStatus, errorThrown) {
-          console.log('error', xhr, textStatus, errorThrown);
         }
       });
 
@@ -201,7 +187,6 @@
           }
         },
         error: function(xhr, textStatus, errorThrown) {
-          console.log('error', xhr, textStatus, errorThrown);
         }
       });
       //var rand = Math.floor(Math.random()*len);      
