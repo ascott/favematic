@@ -25,6 +25,10 @@ body {
 }
 
 #loggedin{
+  display:block;
+}
+
+#loggedout{
   display:none;
 }
 
@@ -177,13 +181,13 @@ ol, ul, li{
 }
 
 .sc-info h3 {
-  font-size:16px;
-  line-height:26px;
-  height:26px;
+  font-size: 20px;
+  line-height: 26px;
+  height: 21px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin:0 0 1px 0;
+  margin: 0 0 1px 0;
 }
 
 .sc-info h4 {
