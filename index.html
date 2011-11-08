@@ -71,8 +71,10 @@
 		  <p>powered by <a href="http://soundcloud.com">soundcloud</a></p>
 		</div>
 		<div id="connect-form">
+      <a href="#" id="refresh">refresh playlist</a>
+      | 
       <a href="#" id="disconnect">logout</a>
-      <a href="#" id="refresh">refresh</a>
+      
 		</div>
 		<ul id="mix"></ul>
 	</div>
@@ -94,10 +96,10 @@
   	    SC.disconnect();
   	    $('#loggedin').css('display','none');
         $('#loggedout').css('display','block');
-        $("#mix").html('');
   	  });
   	  
   	  $("#refresh").click(function(){
+  	    console.log(_uid);
   	    getUserFollowings(_uid)
   	  });
     });
