@@ -22,7 +22,7 @@ function getUserFollowings(curUserId){
       }    
     },
     complete: function(xhr, textStatus) {
-      $('.loading').fadeOut('slow', function(){
+      $('.loading').fadeOut('fast', function(){
         $("#mix").fadeIn('slow');
       });
     },
