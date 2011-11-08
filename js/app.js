@@ -3,6 +3,7 @@ function getRandomInt(min, max) {
 }
     
 function getUserFollowings(curUserId){
+  $("#mix").html('');
   $("#mix").before('<div class="loading"></div>');
   $.ajax({
     url: 'https://api.soundcloud.com/users/'+curUserId+'/followings.json?client_id=956307a721999662072e3d9978287449',
