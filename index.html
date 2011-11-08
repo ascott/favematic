@@ -50,7 +50,8 @@
           flow:         "code",
           connected: function(){
             SC.get("/me", function(me){
-              getUserFollowings(me.id)
+              _uid = me.id;
+              getUserFollowings(_uid)
             });
             $('#loggedin').css('display','block');
             $('#loggedout').css('display','none');
@@ -71,6 +72,7 @@
 		</div>
 		<div id="connect-form">
       <a href="#" id="disconnect">logout</a>
+      <a href="#" id="refresh">refresh</a>
 		</div>
 		<ul id="mix"></ul>
 	</div>
@@ -93,6 +95,10 @@
   	    $('#loggedin').css('display','none');
         $('#loggedout').css('display','block');
         $("#mix").html('');
+  	  });
+  	  
+  	  $("#refresh").click(function(){
+  	    getUserFollowings(_uid)
   	  });
     });
 	</script>
