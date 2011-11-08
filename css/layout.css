@@ -234,11 +234,11 @@ ol, ul, li{
 
 .sc-time-indicators {
   font-size: 10px;
-  line-height:10px;
-  margin: -20px 0 0 -145px;
+  line-height: 10px;
+  margin: -22px 0 0 -145px;
   background: white;
   position: absolute;
-  padding: 2px 5px;
+  padding: 4px 5px 0px 5px;
 }
 
 
