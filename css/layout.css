@@ -20,13 +20,42 @@
 /* #Page Styles
 ================================================== */
 
-body{
+#loggedin{
+  display:none;
 }
 
-#connect-form{
+#loggedin #connect-form{
   float:right;
   height:40px;
   margin:-115px 0 0 0;
+}
+
+#loggedout #connect-form{
+  margin:-24px auto 0 auto;
+  width:200px;
+} 
+
+#sc-logo {
+  display:block;
+  margin:0 auto;
+}
+
+#logo {
+  /*font-size: 36px;
+    line-height: 30px;
+    padding: 2px 2px 0px 2px;
+    width: 195px;*/
+  margin: 0 auto;
+}
+
+#poweredby {
+  font-size:14px;
+  line-height:14px;
+  margin:-5px 0 0 0;
+}
+
+#tagline {
+  padding:24px 0 0 0;
 }
 
 #mix{
@@ -35,11 +64,13 @@ body{
 
 #header{
   margin:0 0 48px 0;
+  text-align:center;
 }
 
 #header span{
   font-size:36px;
-  background-color: #F9EC31;
+  line-height:30px;
+  background: #F9EC31;
   padding:4px 2px 0px 4px;
 }
 
@@ -51,6 +82,8 @@ body{
 #header a {
   color:#ccc;
 }
+
+
 
 ol, ul, li{
   margin:0px;
@@ -251,5 +284,8 @@ ol, ul, li{
   	  #connect-form{
   	    float:none;
   	    margin:-36px 0 24px 0;
+  	  }
+  	  #header{
+  	    margin-top:-12px;
   	  }
 	}

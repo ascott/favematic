@@ -31,6 +31,7 @@
 	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  <script src="http://connect.soundcloud.com/2/latest.min.js"></script>
 
 </head>
 <body>
@@ -43,12 +44,14 @@
 	<div id="loggedout" class="container">
 
 		<div id="header">
-		  <span>favematic</span>
-		  <p>powered by <a href="http://soundcloud.com">soundcloud</a></p>
+		  <h1 id="logo"><img src="images/logo.png" width="279" height="43" alt="Logo"></h1>
+      <!-- <h1 id="logo">favematic</h1> -->
+      <h2 id="poweredby">powered by soundcloud</h2>
+		  <!-- <img src="images/80x50_black.png" width="80" height="50" alt="80x50 Black" id="sc-logo"> -->
+		  <img src="images/tagline.png" width="96" height="233" alt="Tagline" id="tagline">
 		</div>
 		
 		<div id="connect-form">
-		  <script src="http://connect.soundcloud.com/2/latest.min.js"></script>
 
       <script type="text/javascript" charset="utf-8">
         SC.connectForm({
@@ -60,14 +63,14 @@
             SC.get("/me", function(me){
               getUserFollowings(me.id)
             });
-            $('#cwsw-connect').css('display','none');
-            $('#cwsw-disconnect').css('display','block');
+            $('#loggedin').css('display','block');
+            $('#loggedout').css('display','none');
       
           },
           disconnected: function(){
-            $('#cwsw-disconnect').css('display','none');
-            $("#mix").hide();
-            $('#cwsw-connect').css('display','block');
+            $('#loggedin').css('display','none');
+            $('#loggedout').css('display','block');
+            
           }
         });
       </script>
@@ -84,7 +87,6 @@
 		</div>
 		
 		<div id="connect-form">
-		  <script src="http://connect.soundcloud.com/2/latest.min.js"></script>
 
       <script type="text/javascript" charset="utf-8">
         SC.connectForm({
@@ -96,11 +98,13 @@
             SC.get("/me", function(me){
               getUserFollowings(me.id)
             });
-            $('#cwsw-connect').css('display','none');
-            $('#cwsw-disconnect').css('display','block');
+      	    $('#loggedin').css('display','block');
+            $('#loggedout').css('display','none');
       
           },
           disconnected: function(){
+            $('#loggedin').css('display','none');
+            $('#loggedout').css('display','block');
             
           }
         });
