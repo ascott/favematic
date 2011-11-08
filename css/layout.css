@@ -70,7 +70,16 @@ body {
 
 #mix{
   clear:both;
+  overflow:hidden;
 }
+
+li.loading {
+  height:200px;  
+  text-align:center;
+  background: url('../images/loading.gif') no-repeat center center;
+}
+
+
 
 #header{
   margin:0 0 48px 0;
@@ -113,6 +122,11 @@ body {
   color:#ccc;
 }
 
+#footer {
+  border-top: 1px dashed #CCC;
+  padding: 20px 10px;
+  margin: 48px 0 0 0;
+}
 
 
 ol, ul, li{

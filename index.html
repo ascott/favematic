@@ -76,9 +76,9 @@
       <a href="#" id="disconnect">logout</a>
       
 		</div>
-		<ul id="mix"></ul>
+		<ul id="mix"><li class="loading"></li></ul>
 		<div id="footer">
-		  <p>you -> the ppl you follow X their fave tracks = your new playlist.</p>
+		  <p>favematic: you -> the ppl you follow X their fave tracks = your new playlist.</p>
 		  <p>design & code by <a href="http://www.alannascott.com">alanna scott</a></p>
 		</div>
 	</div>
@@ -103,7 +103,6 @@
   	  });
   	  
   	  $("#refresh").click(function(){
-  	    console.log(_uid);
   	    getUserFollowings(_uid)
   	  });
     });
