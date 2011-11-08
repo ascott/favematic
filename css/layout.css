@@ -25,12 +25,12 @@ body {
 }
 
 #loggedin{
-  display:block;
-}
-
-#loggedout{
   display:none;
 }
+
+/*#loggedout{
+  display:none;
+}*/
 
 #loggedin #connect-form{
   float:right;
