@@ -88,7 +88,7 @@ body {
 
 #loggedout #header span.divider{
   background:#fff;
-  opacity:.8;
+  opacity:.7;
 }
 
 
@@ -100,7 +100,7 @@ body {
   font-size:36px;
   line-height:30px;
   background: #F9EC31;
-  padding:4px 2px 0px 4px;
+  padding: 9px 4px 0 4px;
 }
 
 #loggedin #header p {
