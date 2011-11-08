@@ -31,7 +31,7 @@
 }
 
 #loggedout #connect-form{
-  margin:-24px auto 0 auto;
+  margin:-30px auto 0 auto;
   width:200px;
 } 
 
@@ -41,21 +41,22 @@
 }
 
 #logo {
-  /*font-size: 36px;
-    line-height: 30px;
-    padding: 2px 2px 0px 2px;
-    width: 195px;*/
+  font-size: 48px;
+  line-height: 1em;
+  padding: 2px 2px 0px 2px;
+  width: 195px;
   margin: 0 auto;
 }
 
 #poweredby {
-  font-size:14px;
-  line-height:14px;
+  font-size:18px;
+  line-height:1em;
+  text-transform:uppercase;
   margin:-5px 0 0 0;
 }
 
 #tagline {
-  padding:24px 0 0 0;
+  margin:12px 0 0 0;
 }
 
 #mix{
@@ -67,18 +68,34 @@
   text-align:center;
 }
 
+#loggedout #header span{
+  text-transform: uppercase;
+  background: #F9EC31;
+  display: inline-block;
+  margin: 0;
+  font-size: 20px;
+  line-height: 14px;
+  padding: 3px 0 0 0;
+}
+
+#loggedout #header span.divider{
+  background:#fff;
+  opacity:.8;
+}
+
+
 #loggedin #header{
   text-align:left;
 }
 
-#header span{
+#loggedin #header span{
   font-size:36px;
   line-height:30px;
   background: #F9EC31;
   padding:4px 2px 0px 4px;
 }
 
-#header p {
+#loggedin #header p {
   margin:5px 0 0 0;
   color:#ccc;
 }
