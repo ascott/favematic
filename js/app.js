@@ -3,7 +3,7 @@ function getRandomInt(min, max) {
 }
     
 function getUserFollowings(curUserId){
-  $("#mix").html('<li class="loading"></li>');
+  $("#mix").before('<div class="loading"></div>');
   $.ajax({
     url: 'https://api.soundcloud.com/users/'+curUserId+'/followings.json?client_id=956307a721999662072e3d9978287449',
     type: 'GET',
@@ -21,6 +21,8 @@ function getUserFollowings(curUserId){
       }    
     },
     complete: function(xhr, textStatus) {
+      $('.loading').hide();
+      $("#mix").show();
     },
     error: function(xhr, textStatus, errorThrown) {
     }
@@ -50,11 +52,5 @@ function getFavTrack(data){
   var rand = getRandomInt(0, data.length-1);
   var s = '<li id="sc-'+rand+'"><a href="'+data[rand].permalink_url+'" id="sc-player-'+rand+'" class="track">'+data[rand].title+' by '+data[rand].user.username+'</a></li>';
   $("#mix").append(s);
-  //$('#sc-'+rand).scPlayer();
-  
-  
-}
-
-function showMix(){
   $('#sc-'+rand).scPlayer();
 }

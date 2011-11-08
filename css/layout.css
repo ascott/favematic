@@ -71,9 +71,10 @@ body {
 #mix{
   clear:both;
   overflow:hidden;
+  display:none;
 }
 
-li.loading {
+.loading {
   height:200px;  
   text-align:center;
   background: url('../images/loading.gif') no-repeat center center;
