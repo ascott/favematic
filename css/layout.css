@@ -20,6 +20,10 @@
 /* #Page Styles
 ================================================== */
 
+body {
+  text-transform:uppercase;
+}
+
 #loggedin{
   display:none;
 }
