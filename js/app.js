@@ -10,16 +10,26 @@ function getUserFollowings(curUserId){
     type: 'GET',
     dataType: 'json',
     success: function(data, textStatus, xhr) {
-      var mixlen = 10;
-      var i = 0;
-      while(i < mixlen){
-        var rand = getRandomInt(0, data.length-1);
-        //does this user have public favs?
-        if (data[rand].public_favorites_count != 0){
-          getFollowersFavs(data[rand].id);
-          i++;             
+      if (data.length < 2){
+        $('#mix').html("<li class='alert'>you need to follow at least 2 people! head over to <a href='http://soundcloud.com/people'>soundcloud</a> and find some people to follow so i can make a playlist for you!</li>");
+      }
+      else {
+        var mixlen = 10;
+        var i = 0;
+        while(i < mixlen){
+          var rand = getRandomInt(0, data.length-1);
+          //does this user have public favs?
+          if (data[rand].public_favorites_count > 0){
+            //TODO: account for duplicate tracks
+            getFollowersFavs(data[rand].id);
+            i++;             
+          }
+          else{
+            $('#mix').html("<li class='alert'>the people you are following don't have any faves :( <br>head over to <a href='http://soundcloud.com/people'>soundcloud</a> and find some new people to follow so i can make a playlist for you!</li>");
+            break;
+          }
         }
-      }    
+      }
     },
     complete: function(xhr, textStatus) {
       $('.loading').fadeOut('fast', function(){
@@ -27,6 +37,7 @@ function getUserFollowings(curUserId){
       });
     },
     error: function(xhr, textStatus, errorThrown) {
+      $("mix").html('<li class="error">something went wrong :( try reloading the page</li>');
     }
   });
 }
@@ -46,6 +57,7 @@ function getFollowersFavs(followerid){
       }
     },
     error: function(xhr, textStatus, errorThrown) {
+      $("mix").html('<li class="error">something went wrong :( try reloading the page</li>');
     }
   });
 }

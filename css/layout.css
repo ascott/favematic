@@ -25,12 +25,12 @@ body {
 }
 
 #loggedin{
-  display:none;
+  display:block;
 }
 
-/*#loggedout{
+#loggedout{
   display:none;
-}*/
+}
 
 #loggedin #connect-form{
   float:right;
@@ -289,6 +289,11 @@ ol, ul, li{
 
 .sc-player.playing .sc-controls a.sc-play:hover{
   background-position: 0 0;
+}
+
+.alert {
+  font-size:36px;
+  line-height:1.3em;
 }
 
 /* #Media Queries
