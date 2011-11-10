@@ -63,8 +63,8 @@ function getFollowersFavs(followerid){
 }
 
 function hasFaves(data){  
+  var count = 0;
   for (var i=0; i < data.length; i++) {
-    var count = 0;
     count += data[i].public_favorites_count;
   }
   if(count < 5){
