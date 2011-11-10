@@ -85,26 +85,14 @@
 
 	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
   <script type="text/javascript" src="js/soundcloud.player.api.js"></script>
-  <script type="text/javascript" src="js/sc-player.js"></script>
+  <script type="text/javascript" src="js/sc-player.js"></script>  
   <script type="text/javascript" src="js/app.js">
     
   </script>
 
 	<script type="text/javascript" charset="utf-8">
     $(document).ready(function() {
-      //mobile safari thing
-      window.scrollTo(0,1);
-      $.scPlayer.defaults.onDomReady = null;
-      //getUserFollowings('8775782'); //7787606 //8775782
-      $('#disconnect').click(function(){
-  	    SC.disconnect();
-  	    $('#loggedin').css('display','none');
-        $('#loggedout').css('display','block');
-  	  });
-  	  
-  	  $("#refresh").click(function(){
-  	    getUserFollowings(_uid)
-  	  });
+      init();      
     });
 	</script>
 	<script type="text/javascript">
