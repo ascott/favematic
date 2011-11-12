@@ -18,7 +18,7 @@ function init(){
   $("#refresh").click(function(){
     getUserFollowings(_uid);
   });
-  //debug();
+  debug();
 }
 
 function getRandomInt(min, max) {
@@ -46,7 +46,7 @@ function getUserFollowings(curUserId){
       }
     }
     else{
-      $("#mix").html("<li class='alert'>The people you are following have fewer than 5 fave tracks between them. Follow some more people on <a href='http://soundcloud.com/people'>Soundcloud</a>, and then I'll make a sweet playlist for you! weeee!!!</li>");
+      $("#mix").html("<li class='alert'>The people you are following have fewer than 10 fave tracks between them. Follow some more people on <a href='http://soundcloud.com/people'>Soundcloud</a>, and then I'll make a sweet playlist for you! weeee!!!</li>");
     }
     $('.loading').fadeOut('fast', function(){
       $("#mix").fadeIn('slow');
@@ -67,7 +67,7 @@ function hasFaves(data){
   for (var i=0; i < data.length; i++) {
     count += data[i].public_favorites_count;
   }
-  if(count < 5){
+  if(count < 11){
     return false;
   }
   else{
