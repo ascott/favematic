@@ -18,7 +18,7 @@ function init(){
   $("#refresh").click(function(){
     getUserFollowings(_uid);
   });
-  debug();
+  //debug();
 }
 
 function getRandomInt(min, max) {
